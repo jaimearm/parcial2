@@ -1,0 +1,130 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Comedor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  
+  <ion-card>
+    <img src="assets/imgu/6.jpg"/>
+    <ion-card-header>
+      <ion-card-title>Comedor Universitario</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Bienvenido estudiante upecista, por favor constesta el siguiente formulario para
+      realizar la compra.
+    </ion-card-content>
+  </ion-card>
+<br>
+<br>
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="text-align: center;">Datos</ion-title>
+  </ion-toolbar>
+</ion-header>
+  <ion-list>
+    <ion-item>
+      <ion-input label="Nombre" labelPlacement="stacked" [clearInput]="true">
+      </ion-input>
+    </ion-item>
+
+    <ion-list>
+      <ion-item>
+        <ion-select aria-label="Fruit" interface="popover" placeholder="Selecciona tipo de documento">
+          <ion-select-option value="apples">Cedula </ion-select-option>
+          <ion-select-option value="oranges">Tarjeta de identidad</ion-select-option>
+          <ion-select-option value="bananas">Pasaporte</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-item>
+      <ion-input label="Numero de documento" labelPlacement="stacked" [clearInput]="true">
+      </ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-select aria-label="Fruit" interface="popover" placeholder="Seleccione rol">
+        <ion-select-option value="Estudiante">Estudiante</ion-select-option>
+        <ion-select-option value="Docente">Docente</ion-select-option>
+        <ion-select-option value="Administrativo">Administrativo</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+
+  <ion-list>
+    <ion-item>
+      <ion-select aria-label="Fruit" interface="popover" placeholder="Eliga su carrera">
+        <ion-select-option value="Estudiante">Sistemas</ion-select-option>
+        <ion-select-option value="Docente">contaduria</ion-select-option>
+        <ion-select-option value="Administrativo">Ambiental</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+
+<ion-modal [keepContentsMounted]="true">
+  <ng-template>
+    <ion-datetime id="datetime"></ion-datetime>
+  </ng-template>
+</ion-modal>
+
+<br>
+
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="text-align: center;">Menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Selecciona tipo de comida:</ion-label>
+    <ion-select [(ngModel)]="selectedComida" (ionChange)="updateFood()">
+      <ion-select-option *ngFor="let comida of comidas" [value]="comida">{{ comida }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Selecciona tu comida:</ion-label>
+    <ion-select [(ngModel)]="selectedCena" (ionChange)="updatePrice()">
+      <ion-select-option *ngFor="let cena of food" [value]="cena">{{ cena }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Selecciona el precio:</ion-label>
+    <ion-select [(ngModel)]="selectedPrecio">
+      <ion-select-option *ngFor="let precio of precios" [value]="precio">{{ precio }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <br>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title style="text-align: center;">Fecha de reserva</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <br>
+  <ion-datetime-button datetime="datetime"></ion-datetime-button>
+
+  <br>
+
+<ion-modal [keepContentsMounted]="true">
+  <ng-template>
+    <ion-datetime id="datetime" hourCycle="h12"></ion-datetime>
+  </ng-template>
+</ion-modal>
+<ion-button (click)="presentAlert()" expand="block">Pagar</ion-button>
+</ion-content>
